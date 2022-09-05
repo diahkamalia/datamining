@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>sdad &#8212; Data Mining</title>
+    <title>Tugas 1 &#8212; Data Mining</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -122,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   sdad
+   Tugas 1
   </a>
  </li>
 </ul>
@@ -321,7 +321,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>sdad</h1>
+                <h1>Tugas 1</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -333,269 +333,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="sdad">
-<h1>sdad<a class="headerlink" href="#sdad" title="Permalink to this headline">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pwd
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/drive/MyDrive/Datamining/tugas
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/italy/covid_italy_long.csv&quot;</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 525 entries, 0 to 524
-Data columns (total 4 columns):
- #   Column      Non-Null Count  Dtype 
----  ------      --------------  ----- 
- 0   date        525 non-null    object
- 1   region      525 non-null    object
- 2   sub_region  525 non-null    object
- 3   total       525 non-null    int64 
-dtypes: int64(1), object(3)
-memory usage: 16.5+ KB
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-cd0a1417-37fb-4197-96f4-74f8976e7739">
-    <div class="colab-df-container">
-      <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>region</th>
-      <th>sub_region</th>
-      <th>total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2020-01-31</td>
-      <td>South</td>
-      <td>ABR</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2020-01-31</td>
-      <td>South</td>
-      <td>BAS</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2020-01-31</td>
-      <td>North-East</td>
-      <td>BZ</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2020-01-31</td>
-      <td>South</td>
-      <td>CAL</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020-01-31</td>
-      <td>South</td>
-      <td>CAM</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>520</th>
-      <td>2020-03-14</td>
-      <td>North-East</td>
-      <td>TN</td>
-      <td>43</td>
-    </tr>
-    <tr>
-      <th>521</th>
-      <td>2020-03-14</td>
-      <td>Center</td>
-      <td>TOS</td>
-      <td>160</td>
-    </tr>
-    <tr>
-      <th>522</th>
-      <td>2020-03-14</td>
-      <td>Center</td>
-      <td>UMB</td>
-      <td>31</td>
-    </tr>
-    <tr>
-      <th>523</th>
-      <td>2020-03-14</td>
-      <td>North-West</td>
-      <td>VDA</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>524</th>
-      <td>2020-03-14</td>
-      <td>North-East</td>
-      <td>VEN</td>
-      <td>342</td>
-    </tr>
-  </tbody>
-</table>
-<p>525 rows × 4 columns</p>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-cd0a1417-37fb-4197-96f4-74f8976e7739')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-cd0a1417-37fb-4197-96f4-74f8976e7739 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-cd0a1417-37fb-4197-96f4-74f8976e7739');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        0
-1        0
-2        0
-3        0
-4        0
-      ... 
-520     43
-521    160
-522     31
-523     14
-524    342
-Name: total, Length: 525, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p>#Tugas 1</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tugas-1">
+<h1>Tugas 1<a class="headerlink" href="#tugas-1" title="Permalink to this headline">#</a></h1>
 <p>#1. Membaca data dari URL
 #2. Membuat statistik diskriptif dari data (setiap attribut yang bertipe numerik)
 #3. Mendeskripsikan kemiringan/skewned dari data setiap variabel (bertipe numerik)</p>
@@ -652,7 +391,7 @@ memory usage: 229.2+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-e07c2e54-6647-44f1-9630-78ac944acc5b">
+  <div id="df-67a7bf6a-133b-4bd6-930a-a83d5c4d5f71">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -784,7 +523,7 @@ memory usage: 229.2+ KB
 </table>
 <p>4888 rows × 6 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-e07c2e54-6647-44f1-9630-78ac944acc5b')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-67a7bf6a-133b-4bd6-930a-a83d5c4d5f71')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -835,12 +574,12 @@ memory usage: 229.2+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-e07c2e54-6647-44f1-9630-78ac944acc5b button.colab-df-convert');
+          document.querySelector('#df-67a7bf6a-133b-4bd6-930a-a83d5c4d5f71 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-e07c2e54-6647-44f1-9630-78ac944acc5b');
+          const element = document.querySelector('#df-67a7bf6a-133b-4bd6-930a-a83d5c4d5f71');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -870,7 +609,7 @@ memory usage: 229.2+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-ccb7c472-35a2-4acc-b56f-be5a10aae2a7">
+  <div id="df-672f1956-acbd-41e4-a7a6-3c7815b16b9b">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -947,7 +686,7 @@ memory usage: 229.2+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-ccb7c472-35a2-4acc-b56f-be5a10aae2a7')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-672f1956-acbd-41e4-a7a6-3c7815b16b9b')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -998,12 +737,12 @@ memory usage: 229.2+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-ccb7c472-35a2-4acc-b56f-be5a10aae2a7 button.colab-df-convert');
+          document.querySelector('#df-672f1956-acbd-41e4-a7a6-3c7815b16b9b button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-ccb7c472-35a2-4acc-b56f-be5a10aae2a7');
+          const element = document.querySelector('#df-672f1956-acbd-41e4-a7a6-3c7815b16b9b');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1033,7 +772,7 @@ memory usage: 229.2+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-539f144e-3b91-44f3-a0af-b9d7400b92d8">
+  <div id="df-54b8ab5e-41d6-4ef9-bce7-d369897927e6">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1110,7 +849,7 @@ memory usage: 229.2+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-539f144e-3b91-44f3-a0af-b9d7400b92d8')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-54b8ab5e-41d6-4ef9-bce7-d369897927e6')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1161,12 +900,12 @@ memory usage: 229.2+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-539f144e-3b91-44f3-a0af-b9d7400b92d8 button.colab-df-convert');
+          document.querySelector('#df-54b8ab5e-41d6-4ef9-bce7-d369897927e6 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-539f144e-3b91-44f3-a0af-b9d7400b92d8');
+          const element = document.querySelector('#df-54b8ab5e-41d6-4ef9-bce7-d369897927e6');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1199,7 +938,7 @@ memory usage: 229.2+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-03b9c98e-cf8a-4816-85bf-1ee5f8eeac32">
+  <div id="df-c5d2d9c0-d1e6-43a0-88b7-8a800a051d71">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1285,7 +1024,7 @@ memory usage: 229.2+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-03b9c98e-cf8a-4816-85bf-1ee5f8eeac32')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c5d2d9c0-d1e6-43a0-88b7-8a800a051d71')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1336,12 +1075,12 @@ memory usage: 229.2+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-03b9c98e-cf8a-4816-85bf-1ee5f8eeac32 button.colab-df-convert');
+          document.querySelector('#df-c5d2d9c0-d1e6-43a0-88b7-8a800a051d71 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-03b9c98e-cf8a-4816-85bf-1ee5f8eeac32');
+          const element = document.querySelector('#df-c5d2d9c0-d1e6-43a0-88b7-8a800a051d71');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1377,7 +1116,7 @@ memory usage: 229.2+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-fcba09a2-821f-4b98-a018-5a2d6b1f0067">
+  <div id="df-c4c4e15d-981f-45ff-b18b-0bb579dd92a4">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1414,7 +1153,7 @@ memory usage: 229.2+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-fcba09a2-821f-4b98-a018-5a2d6b1f0067')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c4c4e15d-981f-45ff-b18b-0bb579dd92a4')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1465,12 +1204,12 @@ memory usage: 229.2+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-fcba09a2-821f-4b98-a018-5a2d6b1f0067 button.colab-df-convert');
+          document.querySelector('#df-c4c4e15d-981f-45ff-b18b-0bb579dd92a4 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-fcba09a2-821f-4b98-a018-5a2d6b1f0067');
+          const element = document.querySelector('#df-c4c4e15d-981f-45ff-b18b-0bb579dd92a4');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1530,7 +1269,7 @@ memory usage: 229.2+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-c76bc2ea-0007-4e16-8165-2a6458db4c36">
+  <div id="df-c537cc6c-a65e-46cd-98dc-4783fe3b1a22">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1567,7 +1306,7 @@ memory usage: 229.2+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-c76bc2ea-0007-4e16-8165-2a6458db4c36')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c537cc6c-a65e-46cd-98dc-4783fe3b1a22')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1618,12 +1357,12 @@ memory usage: 229.2+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-c76bc2ea-0007-4e16-8165-2a6458db4c36 button.colab-df-convert');
+          document.querySelector('#df-c537cc6c-a65e-46cd-98dc-4783fe3b1a22 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-c76bc2ea-0007-4e16-8165-2a6458db4c36');
+          const element = document.querySelector('#df-c537cc6c-a65e-46cd-98dc-4783fe3b1a22');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1671,7 +1410,7 @@ memory usage: 229.2+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-12a1ff51-9da6-4934-9dce-50d99400a030">
+  <div id="df-0cb636e5-3a48-435d-a060-c73c5e176044">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1708,7 +1447,7 @@ memory usage: 229.2+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-12a1ff51-9da6-4934-9dce-50d99400a030')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-0cb636e5-3a48-435d-a060-c73c5e176044')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1759,12 +1498,12 @@ memory usage: 229.2+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-12a1ff51-9da6-4934-9dce-50d99400a030 button.colab-df-convert');
+          document.querySelector('#df-0cb636e5-3a48-435d-a060-c73c5e176044 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-12a1ff51-9da6-4934-9dce-50d99400a030');
+          const element = document.querySelector('#df-0cb636e5-3a48-435d-a060-c73c5e176044');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1815,7 +1554,7 @@ $<span class="math notranslate nohighlight">\( \operatorname{Kurt}[X]=\mathrm{E}
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Data Xmin&#39;)
 </pre></div>
 </div>
-<img alt="_images/notebook_26_2.png" src="_images/notebook_26_2.png" />
+<img alt="_images/notebook_20_2.png" src="_images/notebook_20_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1833,10 +1572,10 @@ $<span class="math notranslate nohighlight">\( \operatorname{Kurt}[X]=\mathrm{E}
   warnings.warn(msg, FutureWarning)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe49b853d50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f9fcaed5b50&gt;
 </pre></div>
 </div>
-<img alt="_images/notebook_27_2.png" src="_images/notebook_27_2.png" />
+<img alt="_images/notebook_21_2.png" src="_images/notebook_21_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1854,10 +1593,10 @@ $<span class="math notranslate nohighlight">\( \operatorname{Kurt}[X]=\mathrm{E}
   warnings.warn(msg, FutureWarning)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe49b379110&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f9fc888a210&gt;
 </pre></div>
 </div>
-<img alt="_images/notebook_28_2.png" src="_images/notebook_28_2.png" />
+<img alt="_images/notebook_22_2.png" src="_images/notebook_22_2.png" />
 </div>
 </div>
 </section>
