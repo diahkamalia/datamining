@@ -1,11 +1,22 @@
-# Welcome to your Jupyter Book
+# Data Mining
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+**Data Mining**  merupakan subjek yang melibatkan berbagai disiplin bidang yang bertujuan bagaimana cara untuk mendapatkan pengetahuan / informasi dari tumpukan data. Data Mining ditekankan pada proses menemukan sesuatu yang berharga dari bahan-bahan mentah yang ada serta bagaimana mendapatkan informasi yang berharga untuk pijakan pengambilan keputusan atau tujuan tertentu.
 
-Check out the content pages bundled with this sample book to see more.
+# Tugas Data Mining
+
+Kemampuan **Data Mining** untuk mencari informasi bisnis yang berharga dari basis data yang sangat besar, dapat dianalogikan dengan penambangan logam mulia dari lahan sumbernya, teknologi ini dipakai untuk :
+
+-   Memahami Bisnis (Business Understanding)
+-   Memahami Data (Data Understanding)
+-   Persiapan Data
+-   Pemodelan
+
+# Keunggulan Data Mining
+
+Berikut keunggulan dari mengelola **Data Mining** :
+
+1.  Data mining dapat memberikan pemahaman data yang lebih lengkap dengan menemukan pola yang sebelumnya tidak terlihat dan
+2.  Membuat model yang untuk memprediksi, sehingga memungkinkan orang untuk membuat keputusan yang lebih baik, sebagai acuan tindakan untuk yang akan datang dalam membuat keputusan
 
 ```{tableofcontents}
 ```
