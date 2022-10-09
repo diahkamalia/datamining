@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Clustering K-Means &#8212; Diah Kamalia 200411100061</title>
+    <title>K-Means Clustering &#8212; Diah Kamalia 200411100061</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -122,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="notebook.html">
-   Statistik Diskriptif
+   Statistik Deskriptif
   </a>
  </li>
  <li class="toctree-l1">
@@ -137,7 +137,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Clustering K-Means
+   K-Means Clustering
   </a>
  </li>
 </ul>
@@ -336,7 +336,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Clustering K-Means</h1>
+                <h1>K-Means Clustering</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -348,8 +348,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="clustering-k-means">
-<h1>Clustering K-Means<a class="headerlink" href="#clustering-k-means" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="k-means-clustering">
+<h1>K-Means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">#</a></h1>
 <p>Suatu metode penganalisaan data atau metode Data Mining yang melakukan proses pemodelan unssupervised learning dan menggunakan metode yang  mengelompokkan beberapa data ke dalam kelompok yang menjelaskan data dalam satu kelompok memiliki karakteristik yang sama dan memiliki karakteristik yang berbeda dengan data yang ada di kelompok lain.<br><br>
 <em>Simbol K pada K-means clustering menandakan jumlah kluster yang digunakan.</em>
 <br><br>
@@ -365,14 +365,24 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 <span class="math notranslate nohighlight">\(x\)</span>  = Case <em>i</em><br>
 <span class="math notranslate nohighlight">\(c\)</span>  = Centroid for Cluster <em>j</em><br>
 <span class="math notranslate nohighlight">\(\left\|x_i^{(j)}-c_j\right\|^2\)</span> = Dintance Function</p>
-<p><strong>Step</strong></p>
+<p><strong>K-Means Clustering ini secara umum dilakukan dengan algoritma dasar sebagai berikut:</strong></p>
 <ol class="simple">
-<li><p>Mengelompokkan data ke dalam k grup di mana k telah ditentukan sebelumnya.</p></li>
-<li><p>Pilih k titik secara acak sebagai pusat cluster.</p></li>
-<li><p>Menghitung jarak masing-masing data ke pusat cluster kemudian memasukan data tersebut ke cluster tertentu jika memiliki jarak terdekat (jarak yang nilainya rendah)</p></li>
-<li><p>Menentukan pusat cluster baru dengan menghitung rata-rata dari anggota cluster</p></li>
-<li><p>Ulangi langkah 3 hingga tidak ada data yang berpindah tempat.</p></li>
+<li><p>Tentukan jumlah cluster</p></li>
+<li><p>Alokasikan data ke dalam cluster secara random</p></li>
+<li><p>Hitung centroid/rata-rata dari data yang ada di masing-masing cluster</p></li>
+<li><p>Alokasikan masing-masing data ke centroid/rata-rata terdekat</p></li>
+<li><p>Kembali ke Step 3, apabila masih ada data yang berpindah cluster atau apabila perubahan nilai centroid, ada yang di atas nilai threshold yang ditentukan atau apabila perubahan nilai pada objective function yang digunakan di atas nilai threshold yang ditentukan</p></li>
 </ol>
+<blockquote>
+<div><p><strong>K-Means Clustering</strong> bertujuan untuk meminimalisasikan objective function yang diset dalam proses clustering dengan cara meminimalkan variasi antar data yang ada di dalam suatu cluster dan memaksimalkan variasi dengan data yang ada di cluster lainnya juga bertujuan untuk menemukan grup dalam data, dengan jumlah grup yang diwakili oleh variabel K.</p>
+</div></blockquote>
+<p><strong>Ada beberapa kelebihan pada algoritma k-means, yaitu:</strong></p>
+<ul class="simple">
+<li><p>Mudah untuk diimplementasikan dan dijalankan.</p></li>
+<li><p>Waktu yang dibutuhkan untuk menjalankan pembelajaran ini relatif cepat.</p></li>
+<li><p>Mudah untuk diadaptasi.</p></li>
+<li><p>Umum digunakan.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import Modul</span>
@@ -381,6 +391,7 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 </pre></div>
 </div>
 </div>
@@ -388,7 +399,7 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Menampilkan Dataset</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/alisaSugiarti/datamining/main/IRIS.csv&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/diahkamalia/DataMining1/main/IRIS.csv&quot;</span>
 <span class="c1">#colnames = [&#39;sepal-length&#39;, &#39;sepal-width&#39;, &#39;petal-length&#39;, &#39;petal-width&#39;, &#39;Class&#39;]</span>
 <span class="n">air</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">air</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -397,7 +408,7 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-e8e69c03-bcbb-425e-ae0a-e12c9c84f3c5">
+  <div id="df-f0bf894d-7ec9-489a-8adb-9c48148fa497">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -468,7 +479,7 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-e8e69c03-bcbb-425e-ae0a-e12c9c84f3c5')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-f0bf894d-7ec9-489a-8adb-9c48148fa497')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -519,12 +530,12 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 
       <script>
         const buttonEl =
-          document.querySelector('#df-e8e69c03-bcbb-425e-ae0a-e12c9c84f3c5 button.colab-df-convert');
+          document.querySelector('#df-f0bf894d-7ec9-489a-8adb-9c48148fa497 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-e8e69c03-bcbb-425e-ae0a-e12c9c84f3c5');
+          const element = document.querySelector('#df-f0bf894d-7ec9-489a-8adb-9c48148fa497');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -550,14 +561,15 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_x</span> <span class="o">=</span> <span class="n">air</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">air_x</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">air</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">air</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-940dae74-0d56-4ec2-bc50-8a552a3851c5">
+  <div id="df-4e71dd57-49f4-4320-8a1e-c597ef8e0ee7">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -622,7 +634,7 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-940dae74-0d56-4ec2-bc50-8a552a3851c5')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-4e71dd57-49f4-4320-8a1e-c597ef8e0ee7')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -673,12 +685,12 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 
       <script>
         const buttonEl =
-          document.querySelector('#df-940dae74-0d56-4ec2-bc50-8a552a3851c5 button.colab-df-convert');
+          document.querySelector('#df-4e71dd57-49f4-4320-8a1e-c597ef8e0ee7 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-940dae74-0d56-4ec2-bc50-8a552a3851c5');
+          const element = document.querySelector('#df-4e71dd57-49f4-4320-8a1e-c597ef8e0ee7');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -700,11 +712,14 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 </div></div>
 </div>
 <blockquote>
+<div><p>Fungsi dri <strong>iloc</strong> dalah untuk menentukan baris dan kolom dengan indeks. Untuk mengakses lebih dari satu baris, gunakan tanda kurung ganda dan tentukan indeks, dipisahkan dengan koma. [ , ] merupakan bentuk dari list, [ : ] merupakan bentuk dari slicing.</p>
+</div></blockquote>
+<blockquote>
 <div><p>Selanjutnya mengubah dataframe ke dalam bentuk Array</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">air_x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x_array</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -978,27 +993,110 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4af148ac10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff9233b3cd0&gt;
 </pre></div>
 </div>
-<img alt="_images/notebook4_20_1.png" src="_images/notebook4_20_1.png" />
+<img alt="_images/notebook4_23_1.png" src="_images/notebook4_23_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Opsi 2</span>
-<span class="c1">#Visualising the clusters</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_scaled</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_scaled</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">air</span><span class="o">.</span><span class="n">kluster</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="p">)</span>
-<span class="n">centers</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centers</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">centers</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span> <span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hasil Clustering K-Means&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span> <span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">air</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">,</span><span class="s2">&quot;petal_length&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Petal Length&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebook4_21_0.png" src="_images/notebook4_21_0.png" />
+<img alt="_images/notebook4_24_0.png" src="_images/notebook4_24_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">air</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">,</span><span class="s2">&quot;petal_width&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Petal Width&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebook4_25_0.png" src="_images/notebook4_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">air</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">,</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sepal Length&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebook4_26_0.png" src="_images/notebook4_26_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">air</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">,</span><span class="s2">&quot;sepal_width&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sepal Width&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebook4_27_0.png" src="_images/notebook4_27_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">air</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebook4_28_0.png" src="_images/notebook4_28_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">air</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebook4_29_0.png" src="_images/notebook4_29_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">air</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebook4_30_0.png" src="_images/notebook4_30_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal_width&quot;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">air</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebook4_31_0.png" src="_images/notebook4_31_0.png" />
 </div>
 </div>
 <p><strong>Kesimpulan</strong></p>

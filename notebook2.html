@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Implementasi K-NN" href="notebook3.html" />
-    <link rel="prev" title="Statistik Diskriptif" href="notebook.html" />
+    <link rel="prev" title="Statistik Deskriptif" href="notebook.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,7 +123,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="notebook.html">
-   Statistik Diskriptif
+   Statistik Deskriptif
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -138,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="notebook4.html">
-   Clustering K-Means
+   K-Means Clustering
   </a>
  </li>
 </ul>
@@ -348,6 +348,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#labels-digunakan-untuk-mengkategorikan-petal-yang-ada-di-dataset">
+   Labels digunakan untuk mengkategorikan petal yang ada di dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#equal-width-binning">
    Equal Width Binning
   </a>
@@ -363,6 +368,47 @@ title="Print to PDF"
     Membuat fungsi
    </strong>
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fungsi-untuk-menghitung-jumlah-data-berdasarkan-kategori">
+     Fungsi untuk menghitung jumlah data berdasarkan kategori
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fungsi-untuk-proses-info-dari-d">
+     Fungsi untuk proses info dari D
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entropy">
+   Entropy
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fungsi-untuk-menghitung-info">
+     Fungsi untuk menghitung Info
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gain">
+   Gain
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#menghitung-entropy-overall">
+     Menghitung Entropy Overall
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#menghitung-split">
+     Menghitung Split
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -384,6 +430,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#labels-digunakan-untuk-mengkategorikan-petal-yang-ada-di-dataset">
+   Labels digunakan untuk mengkategorikan petal yang ada di dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#equal-width-binning">
    Equal Width Binning
   </a>
@@ -399,6 +450,47 @@ title="Print to PDF"
     Membuat fungsi
    </strong>
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fungsi-untuk-menghitung-jumlah-data-berdasarkan-kategori">
+     Fungsi untuk menghitung jumlah data berdasarkan kategori
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fungsi-untuk-proses-info-dari-d">
+     Fungsi untuk proses info dari D
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entropy">
+   Entropy
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fungsi-untuk-menghitung-info">
+     Fungsi untuk menghitung Info
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gain">
+   Gain
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#menghitung-entropy-overall">
+     Menghitung Entropy Overall
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#menghitung-split">
+     Menghitung Split
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -412,7 +504,17 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="diskritisasi">
 <h1>Diskritisasi<a class="headerlink" href="#diskritisasi" title="Permalink to this headline">#</a></h1>
-<p><strong>Carilah data yang bertipe numerik (Data Klasifikasi)</strong></p>
+<p>Diskritisasi adalah proses memasukkan nilai ke dalam wadah sehingga ada sejumlah keadaan yang mungkin. Wadah itu sendiri diperlakukan sebagai nilai yang dipesan dan diskrit. Anda dapat membedakan kolom numerik dan string. Ada beberapa metode yang dapat Anda gunakan untuk mendiskritisasi data.</p>
+<p>Sebagai contoh apabila terdapat data numerik dengan data berikut:</p>
+<ul class="simple">
+<li><p><strong>2, 4, 10, 17, 5, 23, 11, 48, 35, 56, 20</strong></p></li>
+</ul>
+<p>Maka, dengan Diskritisasi, data tersebut dapat dikategorikan menjadi dua kelompok:</p>
+<ul class="simple">
+<li><p>Kelompok 1 (Dibawah 25): <strong>2, 4, 5,10, 11, 17, 20, 23</strong></p></li>
+<li><p>Kelompok 2 (Diatas 25): <strong>35, 48, 56</strong></p></li>
+</ul>
+<p>Carilah data yang bertipe numerik (Data Klasifikasi)</p>
 <ol class="simple">
 <li><p>Lakukan proses diskritisasi dengan Equal Width dan Equal Frequency</p></li>
 <li><p>Lakukan proses diskritisasi dengan Basis Entropy</p></li>
@@ -471,7 +573,7 @@ memory usage: 6.0+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-93357de9-25b7-4f39-b67a-a0ee336998ab">
+  <div id="df-82a6359b-7782-4a31-a0a3-2ca560ffae8b">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -591,7 +693,7 @@ memory usage: 6.0+ KB
 </table>
 <p>150 rows × 5 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-93357de9-25b7-4f39-b67a-a0ee336998ab')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-82a6359b-7782-4a31-a0a3-2ca560ffae8b')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -642,12 +744,12 @@ memory usage: 6.0+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-93357de9-25b7-4f39-b67a-a0ee336998ab button.colab-df-convert');
+          document.querySelector('#df-82a6359b-7782-4a31-a0a3-2ca560ffae8b button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-93357de9-25b7-4f39-b67a-a0ee336998ab');
+          const element = document.querySelector('#df-82a6359b-7782-4a31-a0a3-2ca560ffae8b');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -675,7 +777,8 @@ memory usage: 6.0+ KB
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Agak Lebar&#39;</span><span class="p">,</span> <span class="s1">&#39;Lebar&#39;</span><span class="p">,</span> <span class="s1">&#39;Sangat Lebar&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Labels digunakan untuk mengkategorikan petal yang ada di dataset</p>
+<section id="labels-digunakan-untuk-mengkategorikan-petal-yang-ada-di-dataset">
+<h2>Labels digunakan untuk mengkategorikan petal yang ada di dataset<a class="headerlink" href="#labels-digunakan-untuk-mengkategorikan-petal-yang-ada-di-dataset" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;Agak Lebar&#39;</span><span class="p">,</span> <span class="s1">&#39;Lebar&#39;</span><span class="p">,</span> <span class="s1">&#39;Sangat Lebar&#39;</span><span class="p">]</span>
@@ -683,17 +786,27 @@ memory usage: 6.0+ KB
 </div>
 </div>
 </div>
+</section>
 <section id="equal-width-binning">
 <h2>Equal Width Binning<a class="headerlink" href="#equal-width-binning" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Pendekatan</span> <span class="pre">binning</span> <span class="pre">yang</span> <span class="pre">paling</span> <span class="pre">sederhana</span> <span class="pre">yaitu</span> <span class="pre">membagi</span> <span class="pre">rentang</span> <span class="pre">X</span> <span class="pre">menjadi</span> <span class="pre">k</span> <span class="pre">interval</span> <span class="pre">yang</span> <span class="pre">sama</span> <span class="pre">lebar.</span> <span class="pre">Lebar</span> <span class="pre">interval</span> <span class="pre">yaitu</span> <span class="pre">rentang</span> <span class="pre">X</span> <span class="pre">dibagi</span> <span class="pre">dengan</span> <span class="pre">k</span></code></p>
 <blockquote>
-<div><p>Formula</p>
+<div><p>Formula
+<br></p>
 </div></blockquote>
 <p align="justify">
 $$
 \begin{align*}
 \displaystyle \text{w} &= \frac{x_{max}-x_{min}}{k}
 \end{align*}
+$$
+Batas interval ke-i adalah sebagai berikut:
+<br> <br> 
+$$
+\begin{aligned}
+v_i &=x_{\min }+i w \\
+i &=1,2,3, \ldots k-1
+\end{aligned}
 $$<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span><span class="p">[</span><span class="s1">&#39;S-sepal_length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">ir</span><span class="p">[</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
@@ -706,7 +819,7 @@ $$<div class="cell docutils container">
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-541b08a9-fbe2-40e5-9737-7378bd6da252">
+  <div id="df-721782ea-ef07-4506-985c-15c4736900d1">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -874,7 +987,7 @@ $$<div class="cell docutils container">
 </table>
 <p>150 rows × 9 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-541b08a9-fbe2-40e5-9737-7378bd6da252')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-721782ea-ef07-4506-985c-15c4736900d1')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -925,12 +1038,12 @@ $$<div class="cell docutils container">
 
       <script>
         const buttonEl =
-          document.querySelector('#df-541b08a9-fbe2-40e5-9737-7378bd6da252 button.colab-df-convert');
+          document.querySelector('#df-721782ea-ef07-4506-985c-15c4736900d1 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-541b08a9-fbe2-40e5-9737-7378bd6da252');
+          const element = document.querySelector('#df-721782ea-ef07-4506-985c-15c4736900d1');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -967,7 +1080,7 @@ $$<div class="cell docutils container">
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-ef793619-3bda-4c11-9bb9-9243f5a57d86">
+  <div id="df-5d249699-a0ef-4c46-bf54-311c23b230c4">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1135,7 +1248,7 @@ $$<div class="cell docutils container">
 </table>
 <p>150 rows × 9 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-ef793619-3bda-4c11-9bb9-9243f5a57d86')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-5d249699-a0ef-4c46-bf54-311c23b230c4')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1186,12 +1299,12 @@ $$<div class="cell docutils container">
 
       <script>
         const buttonEl =
-          document.querySelector('#df-ef793619-3bda-4c11-9bb9-9243f5a57d86 button.colab-df-convert');
+          document.querySelector('#df-5d249699-a0ef-4c46-bf54-311c23b230c4 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-ef793619-3bda-4c11-9bb9-9243f5a57d86');
+          const element = document.querySelector('#df-5d249699-a0ef-4c46-bf54-311c23b230c4');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1227,7 +1340,7 @@ $$<div class="cell docutils container">
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-f26a7875-9a51-47e5-b65f-dee0f0096254">
+  <div id="df-52258dfb-4371-4e9b-abdb-87af51f8e02f">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1311,7 +1424,7 @@ $$<div class="cell docutils container">
 </table>
 <p>150 rows × 2 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-f26a7875-9a51-47e5-b65f-dee0f0096254')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-52258dfb-4371-4e9b-abdb-87af51f8e02f')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1362,12 +1475,12 @@ $$<div class="cell docutils container">
 
       <script>
         const buttonEl =
-          document.querySelector('#df-f26a7875-9a51-47e5-b65f-dee0f0096254 button.colab-df-convert');
+          document.querySelector('#df-52258dfb-4371-4e9b-abdb-87af51f8e02f button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-f26a7875-9a51-47e5-b65f-dee0f0096254');
+          const element = document.querySelector('#df-52258dfb-4371-4e9b-abdb-87af51f8e02f');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1391,9 +1504,8 @@ $$<div class="cell docutils container">
 </section>
 <section id="membuat-fungsi">
 <h2><strong>Membuat fungsi</strong><a class="headerlink" href="#membuat-fungsi" title="Permalink to this headline">#</a></h2>
-<blockquote>
-<div><p>Fungsi untuk menghitung jumlah data berdasarkan kategori</p>
-</div></blockquote>
+<section id="fungsi-untuk-menghitung-jumlah-data-berdasarkan-kategori">
+<h3>Fungsi untuk menghitung jumlah data berdasarkan kategori<a class="headerlink" href="#fungsi-untuk-menghitung-jumlah-data-berdasarkan-kategori" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">overallcat</span><span class="p">(</span><span class="n">eg</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">cat</span><span class="p">):</span>
@@ -1403,9 +1515,9 @@ $$<div class="cell docutils container">
 </div>
 </div>
 </div>
-<blockquote>
-<div><p>Fungsi untuk proses info dari D</p>
-</div></blockquote>
+</section>
+<section id="fungsi-untuk-proses-info-dari-d">
+<h3>Fungsi untuk proses info dari D<a class="headerlink" href="#fungsi-untuk-proses-info-dari-d" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">split</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">eg</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">cat</span><span class="p">):</span>
@@ -1420,20 +1532,22 @@ $$<div class="cell docutils container">
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="entropy">
+<h2>Entropy<a class="headerlink" href="#entropy" title="Permalink to this headline">#</a></h2>
 <blockquote>
-<div><p>Entropy</p>
+<div><p>Entropy adalah ukuran ketidakpastian dalam data. Upaya yang dilakukan adalah dengan mengurangi entropi dan memaksimalkan perolehan informasi. Fitur yang memiliki informasi paling banyak dianggap penting oleh algoritma dan digunakan untuk melatih model. Dengan menggunakan Penguatan informasi, Anda sebenarnya menggunakan entropi.</p>
 </div></blockquote>
-<p align="justify">
+<p>Formula :</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\displaystyle Entropy(S) &amp;= \sum_{i=0}^{k} -phi \ log_{2} \ phi \\
-Keterangan &amp;: \\
-S &amp;= Himpunan \ dataset  \\
-k &amp;= Banyaknya \ partisi \ S \\
-phi &amp;= Proporsi \ S_{i} \ terhadap \ S
-\end{align*}
-\end{split}\]</div>
+\[
+\operatorname{Entropy}(S)=\sum_{i=0}^k-p h i \log _2 p h i
+\]</div>
+<p>Dengan : <br>
+<span class="math notranslate nohighlight">\(S\)</span> = Himpunan  dataset <br>
+<span class="math notranslate nohighlight">\(k\)</span> = Banyaknya  partisi  S <br>
+<span class="math notranslate nohighlight">\(phi\)</span> = Proporsi <span class="math notranslate nohighlight">\(S _i\)</span> terhadap S</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
@@ -1442,32 +1556,33 @@ phi &amp;= Proporsi \ S_{i} \ terhadap \ S
 </div>
 </div>
 </div>
-<blockquote>
-<div><p>Fungsi untuk menghitung Info</p>
-</div></blockquote>
+<section id="fungsi-untuk-menghitung-info">
+<h3>Fungsi untuk menghitung Info<a class="headerlink" href="#fungsi-untuk-menghitung-info" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">eg</span><span class="p">):</span>
-  <span class="k">return</span> <span class="nb">sum</span><span class="p">([(</span><span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">entropy</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="p">])</span>
+  <span class="k">return</span> <span class="nb">sum</span><span class="p">([(</span><span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">eg</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">entropy</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="gain">
+<h2>Gain<a class="headerlink" href="#gain" title="Permalink to this headline">#</a></h2>
 <blockquote>
-<div><p>Gain</p>
+<div><p>Gain adalah metode yang menggunakan teknik scoring untuk pembobotan sebuah fitur dengan menggunakan maksimal entropy.</p>
 </div></blockquote>
-<p align="justify">
-$$
-\begin{align*}
-\displaystyle 𝐺𝑎𝑖𝑛(𝐴) &= 𝐸𝑛𝑡𝑟𝑜𝑝𝑖(𝑆) − \sum_{i=1}^{k}\frac{\left| S \right|}{\left| S_{i} \right|} * 𝐸𝑛𝑡𝑟𝑜𝑝𝑖(𝑆_{i}) \\
-Keterangan &: \\
-𝑆 &: himpunan \ kasus \\
-𝐴 &: atribut \\
-k &: jumlah \ partisi \ atribut \ A \\
-|𝑆𝑖| &: jumlah \ kasus \ pada \ partisi \ ke-i \\
-|𝑆| &: jumlah \ kasus \ dalam \ S 
-\end{align*}
-$$
+<p>Formula :
+$<span class="math notranslate nohighlight">\(
+\operatorname{Gain}(A)=\text { Entropi }(S)-\sum_{i=1}^k \frac{|S|}{\left|S_i\right|} * \text { Entropi }\left(S_i\right)
+\)</span><span class="math notranslate nohighlight">\(
+Keterangan :&lt;br&gt;
+\)</span>𝑆<span class="math notranslate nohighlight">\(= Himpunan  kasus &lt;br&gt;
+\)</span>𝐴<span class="math notranslate nohighlight">\(  = Atribut &lt;br&gt;
+\)</span>k<span class="math notranslate nohighlight">\( = Jumlah partisi atribut A &lt;br&gt;
+\)</span>|𝑆𝑖|<span class="math notranslate nohighlight">\( = Jumlah  kasus pada partisi ke-i&lt;br&gt;
+\)</span>|𝑆|$ = Jumlah kasus dalam S</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gain</span><span class="p">(</span><span class="n">inisial</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
@@ -1476,9 +1591,8 @@ $$
 </div>
 </div>
 </div>
-<blockquote>
-<div><p>Menghitung Entropy Overall</p>
-</div></blockquote>
+<section id="menghitung-entropy-overall">
+<h3>Menghitung Entropy Overall<a class="headerlink" href="#menghitung-entropy-overall" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">overallcat</span><span class="p">(</span><span class="n">eg</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="s1">&#39;sepal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;S-sepal_length&#39;</span><span class="p">)</span>
@@ -1493,9 +1607,9 @@ $$
 </div>
 </div>
 </div>
-<blockquote>
-<div><p>Menghitung Split</p>
-</div></blockquote>
+</section>
+<section id="menghitung-split">
+<h3>Menghitung Split<a class="headerlink" href="#menghitung-split" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#split 4.5</span>
@@ -1506,37 +1620,7 @@ $$
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">16</span><span class="o">-</span><span class="mi">8</span><span class="n">b8c5e6e1e50</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#split 4.5</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">sp</span> <span class="o">=</span> <span class="n">split</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">eg</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="s1">&#39;sepal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;S-sepal_length&#39;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">info</span><span class="p">(</span><span class="n">sp</span><span class="p">,</span> <span class="n">eg</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">gain</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">result1</span> <span class="p">)</span>
-
-<span class="nn">&lt;ipython-input-13-0c323d939613&gt;</span> in <span class="ni">info</span><span class="nt">(d, eg)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">eg</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>   <span class="k">return</span> <span class="nb">sum</span><span class="p">([(</span><span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">entropy</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="p">])</span>
-
-<span class="nn">&lt;ipython-input-13-0c323d939613&gt;</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">eg</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>   <span class="k">return</span> <span class="nb">sum</span><span class="p">([(</span><span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">entropy</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">d</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;sample&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#split 5.5</span>
-<span class="n">sp</span> <span class="o">=</span> <span class="n">split</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="n">eg</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="s1">&#39;sepal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;S-sepal_length&#39;</span><span class="p">)</span>
-<span class="n">result1</span> <span class="o">=</span> <span class="n">info</span><span class="p">(</span><span class="n">sp</span><span class="p">,</span> <span class="n">eg</span><span class="p">)</span>
-<span class="n">gain</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">result1</span> <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7243785559543089
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.03671508206271512
 </pre></div>
 </div>
 </div>
@@ -1558,16 +1642,20 @@ $$
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#split 7.5</span>
+<span class="n">sp</span> <span class="o">=</span> <span class="n">split</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="n">eg</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="s1">&#39;sepal_length&#39;</span><span class="p">,</span> <span class="s1">&#39;S-sepal_length&#39;</span><span class="p">)</span>
+<span class="n">result1</span> <span class="o">=</span> <span class="n">info</span><span class="p">(</span><span class="n">sp</span><span class="p">,</span> <span class="n">eg</span><span class="p">)</span>
+<span class="n">gain</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">result1</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>h
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.12478673585165567
 </pre></div>
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -1602,7 +1690,7 @@ $$
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Statistik Diskriptif</p>
+            <p class="prev-next-title">Statistik Deskriptif</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="notebook3.html" title="next page">
