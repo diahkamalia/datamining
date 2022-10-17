@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="UTS" href="UTS.html" />
+    <link rel="next" title="Naive Bayes" href="notebook5.html" />
     <link rel="prev" title="Implementasi K-NN" href="notebook3.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -139,6 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    K-Means Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebook5.html">
+   Naive Bayes
   </a>
  </li>
  <li class="toctree-l1">
@@ -414,7 +419,7 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-f0bf894d-7ec9-489a-8adb-9c48148fa497">
+  <div id="df-31b44f11-4084-4cac-9921-6e8bcba7d9ff">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -485,7 +490,7 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-f0bf894d-7ec9-489a-8adb-9c48148fa497')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-31b44f11-4084-4cac-9921-6e8bcba7d9ff')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -536,12 +541,12 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 
       <script>
         const buttonEl =
-          document.querySelector('#df-f0bf894d-7ec9-489a-8adb-9c48148fa497 button.colab-df-convert');
+          document.querySelector('#df-31b44f11-4084-4cac-9921-6e8bcba7d9ff button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-f0bf894d-7ec9-489a-8adb-9c48148fa497');
+          const element = document.querySelector('#df-31b44f11-4084-4cac-9921-6e8bcba7d9ff');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -575,7 +580,7 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-4e71dd57-49f4-4320-8a1e-c597ef8e0ee7">
+  <div id="df-7ca8a55d-269f-49da-a9a2-3bf291e33d7d">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -640,7 +645,7 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-4e71dd57-49f4-4320-8a1e-c597ef8e0ee7')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-7ca8a55d-269f-49da-a9a2-3bf291e33d7d')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -691,12 +696,12 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 
       <script>
         const buttonEl =
-          document.querySelector('#df-4e71dd57-49f4-4320-8a1e-c597ef8e0ee7 button.colab-df-convert');
+          document.querySelector('#df-7ca8a55d-269f-49da-a9a2-3bf291e33d7d button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-4e71dd57-49f4-4320-8a1e-c597ef8e0ee7');
+          const element = document.querySelector('#df-7ca8a55d-269f-49da-a9a2-3bf291e33d7d');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -999,7 +1004,7 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff9233b3cd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6c1a7b2fd0&gt;
 </pre></div>
 </div>
 <img alt="_images/notebook4_23_1.png" src="_images/notebook4_23_1.png" />
@@ -1145,10 +1150,10 @@ J=\sum_{j=1}^k \sum_{i=1}^n\left\|x_i^{(j)}-c_j\right\|^2
             <p class="prev-next-title">Implementasi K-NN</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="UTS.html" title="next page">
+    <a class='right-next' id="next-link" href="notebook5.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">UTS</p>
+        <p class="prev-next-title">Naive Bayes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
